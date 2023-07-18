@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.springapp.model.Event;
+import com.example.springapp.repository.EventRepository;
 import com.example.springapp.service.EventService;
 
 import java.util.List;
@@ -22,6 +23,9 @@ public class EventController
 	@Autowired
 	private EventService eventService;
 	
+	
+	@Autowired
+	private EventRepository eventRepository;
 
 	public EventController() {
 		super();
@@ -97,6 +101,30 @@ public class EventController
 		{
 		return ResponseEntity.ok(deleted);
 		}
+	}
+	
+	
+	@PutMapping("/tickets/{id}")
+	public ResponseEntity<String> updateTicketCount(@RequestBody Long ticketCount,@PathVariable("id") Long id)
+	{
+		
+		Event event  = eventService.getEventById(id);
+		Long ticketcountnow =event.getTotalTicket();
+		System.out.println("event ticket count"+ticketcountnow);
+		System.out.println("event tickets to book"+ticketCount);
+		System.out.println(event.toString());
+		
+		if(ticketcountnow < ticketCount)
+		{
+			return ResponseEntity.ok("Not updated tickets");
+		}
+		else 
+		{
+			event.setTotalTicket(ticketcountnow-ticketCount);
+			eventRepository.save(event);
+		return ResponseEntity.ok("Event tickets count updated");
+		}
+		
 	}
 	
 	

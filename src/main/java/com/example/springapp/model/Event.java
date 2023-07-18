@@ -15,10 +15,12 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import lombok.ToString;
 
 
 
 
+@ToString
 @Entity
 @Table(name = "events")
 public class Event

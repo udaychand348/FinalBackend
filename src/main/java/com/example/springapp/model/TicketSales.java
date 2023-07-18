@@ -3,6 +3,12 @@ package com.example.springapp.model;
 
 
 import javax.persistence.*;
+
+import lombok.ToString;
+
+
+
+@ToString
 @Entity
 @Table(name="TicketSales")
 public class TicketSales
@@ -10,6 +16,7 @@ public class TicketSales
 	   @Id
 	   @GeneratedValue(strategy = GenerationType.IDENTITY)
 	   private Long id;
+	   
 	   private String totalTicketsBooked;
 	   private String AvailableTickets;
 	   private String noOfAttendees;
