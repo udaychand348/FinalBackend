@@ -1,6 +1,7 @@
 package com.example.springapp.model;
 
-
+//import javax.persistence.Entity;
+//import javax.persistence.Table;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
@@ -108,3 +109,14 @@ public class Payment {
         this.paypalPassword = paypalPassword;
     }
 }
+
+
+
+//  @Entity
+//  @Table(name = "payments")
+//  public class payment
+//  {
+//	  private Long id;
+//	  private String payment
+//	  
+//  }
